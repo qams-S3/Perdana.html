@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PilihMapel-BK - Aplikasi Simulasi Pemilihan Mata Pelajaran Pilihan</title>
+    <!-- Tailwind CSS untuk Desain Modern & Responsif -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="bg-indigo-600 text-white shadow-md py-4 px-6 sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold tracking-tight">Pilihan Mapel-BK 🎯</h1>
+                <p class="text-xs text-indigo-200">Aplikasi Inovasi Bimbingan Karier SMA</p>
+            </div>
+            <span class="bg-indigo-500 text-xs px-3 py-1 rounded-full font-medium">Kurikulum Merdeka</span>
+        </div>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="flex-grow p-4 md:p-8 max-w-4xl mx-auto w-full">
+        
+        <!-- Kartu Selamat Datang / Tahap Awal (Berkesadaran) -->
+        <div class="bg-white rounded-2xl p-6 shadow-xs border border-slate-100 mb-6">
+            <h2 class="text-lg font-bold text-slate-900 mb-2">Halo, Selamat Datang di Simulator Karirmu!</h2>
+            <p class="text-sm text-slate-600 leading-relaxed">
+                Aplikasi ini dirancang untuk membantumu memetakan kombinasi mata pelajaran pilihan di kelas XI. Jangan cemas dan jangan ikut-ikutan teman! Masukkan data minat dan nilai rapormu secara jujur untuk melihat rekomendasi program studi perkuliahan yang linier.
+            </p>
+        </div>
+
+        <!-- Alur Formulir Aplikasi (Tahap Mengaplikasi) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- Kolom Input Data (Kiri) -->
+            <div class="md:col-span-2 bg-white rounded-2xl p-6 shadow-xs border border-slate-100 space-y-6">
+                <h3 class="text-md font-semibold text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
+                    <span class="flex items-center justify-center bg-indigo-100 text-indigo-600 rounded-full w-6 h-6 text-xs font-bold">1</span>
+                    Input Data Penjelajahan Karir
+                </h3>
+
+                <!-- Form Identitas & Minat -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">Nama Lengkap</label>
+                        <input type="text" id="nama" placeholder="Masukkan nama siswa" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">Target Rumpun Karir / Jurusan PTN</label>
+                        <select id="targetJurusan" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-indigo-500 focus:bg-white transition-all">
+                            <option value="">-- Pilih Rumpun Program Studi --</option>
+                            <option value="kedokteran">Kesehatan & Kedokteran (Saintek)</option>
+                            <option value="teknik">Teknik & Teknologi Informasi (Saintek)</option>
+                            <option value="soshum_ekonomi">Ekonomi, Bisnis & Akuntansi (Soshum)</option>
+                            <option value="soshum_hukum">Hukum, Sosial & Politik (Soshum)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Form Nilai Rapor -->
+                <div class="space-y-3">
+                    <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">Estimasi Nilai Rapor Kelas X (Skala 1-100)</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <div>
+                            <span class="block text-xs text-slate-500 mb-1">Matematika</span>
+                            <input type="number" id="nilai_mtk" min="0" max="100" placeholder="0" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-center focus:outline-none focus:border-indigo-500 focus:bg-white">
+                        </div>
+                        <div>
+                            <span class="block text-xs text-slate-500 mb-1">Fisika / Geografi</span>
+                            <input type="number" id="nilai_sains_sosial" min="0" max="100" placeholder="0" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-center focus:outline-none focus:border-indigo-500 focus:bg-white">
+                        </div>
+                        <div>
+                            <span class="block text-xs text-slate-500 mb-1">Kimia / Ekonomi</span>
+                            <input type="number" id="nilai_kim_eko" min="0" max="100" placeholder="0" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-center focus:outline-none focus:border-indigo-500 focus:bg-white">
+                        </div>
+                        <div>
+                            <span class="block text-xs text-slate-500 mb-1">Biologi / Sosiologi</span>
+                            <input type="number" id="nilai_bio_sos" min="0" max="100" placeholder="0" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-center focus:outline-none focus:border-indigo-500 focus:bg-white">
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="prosesSimulasi()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 rounded-xl shadow-sm transition-all cursor-pointer text-sm">
+                    Analisis Kombinasi Mata Pelajaran 📊
+                </button>
+            </div>
+
+            <!-- Kolom Hasil Rekomendasi / Tahap Merefleksi (Kanan) -->
+            <div class="bg-white rounded-2xl p-6 shadow-xs border border-slate-100 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-md font-semibold text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3 mb-4">
+                        <span class="flex items-center justify-center bg-emerald-100 text-emerald-600 rounded-full w-6 h-6 text-xs font-bold">2</span>
+                        Hasil & Refleksi Karir
+                    </h3>
+
+                    <!-- Tampilan Awal Sebelum di-Submit -->
+                    <div id="placeholderHasil" class="text-center py-12 text-slate-400 space-y-2">
+                        <span class="text-4xl block">📋</span>
+                        <p class="text-xs">Silakan isi data di sebelah kiri dan klik tombol analisis untuk memproses linieritas mapel.</p>
+                    </div>
+
+                    <!-- Kotak Output Pengambilan Keputusan (Hidden by Default) -->
+                    <div id="boxHasil" class="hidden space-y-4">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                            <span class="text-xs text-slate-500 block font-medium">Nama Siswa:</span>
+                            <span id="outNama" class="text-sm font-bold text-slate-800">-</span>
+                        </div>
+
+                        <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+                            <span class="text-xs text-emerald-700 block font-semibold uppercase tracking-wider mb-1">Rekomendasi Paket Mapel Pilihan (Kelas XI)</span>
+                            <ul id="outMapel" class="text-xs text-emerald-900 font-medium list-disc list-inside space-y-1">
+                                <!-- Data diisi via JS -->
+                            </ul>
+                        </div>
+
+                        <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+                            <span class="text-xs text-indigo-700 block font-semibold uppercase tracking-wider mb-1">Analisis Linieritas PTN</span>
+                            <p id="outAnalisis" class="text-xs text-indigo-900 leading-relaxed">
+                                <!-- Data diisi via JS -->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dokumen Output Untuk Orang Tua (Tahap Penutup) -->
+                <div id="boxAksi" class="hidden pt-4 border-t border-slate-100 mt-4">
+                    <p class="text-[11px] text-slate-500 mb-2 leading-tight italic">
+                        *Cetak hasil simulasi ini untuk didiskusikan dan ditandatangani oleh orang tuamu di rumah[cite: 5, 6]!
+                    </p>
+                    <button onclick="window.print()" class="w-full bg-slate-800 hover:bg-slate-900 text-white text-xs py-2 rounded-lg font-medium transition-all cursor-pointer">
+                        Cetak Lembar Rencana Aksi 🖨️
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-center py-4 text-xs mt-8 border-t border-slate-800">
+        <p>&copy; 2026 Karya Inovasi Guru BK - Program Peningkatan GTK SMA (STELA). All Rights Reserved.</p>
+    </footer>
+
+    <!-- Logika Aplikasi (JavaScript Sederhana) -->
+    <script>
+        function prosesSimulasi() {
+            // Ambil Nilai Elemen Input
+            const nama = document.getElementById('nama').value;
+            const target = document.getElementById('targetJurusan').value;
+            const mtk = parseInt(document.getElementById('nilai_mtk').value) || 0;
+            const sainsSosial = parseInt(document.getElementById('nilai_sains_sosial').value) || 0;
+            const kimEko = parseInt(document.getElementById('nilai_kim_eko').value) || 0;
+            const bioSos = parseInt(document.getElementById('nilai_bio_sos').value) || 0;
+
+            // Validasi Input Sederhana
+            if (!nama || !target) {
+                alert("Harap isi Nama Lengkap dan pilih Target Rumpun Karir terlebih dahulu!");
+                return;
+            }
+
+            // Tampilkan elemen hasil dan sembunyikan placeholder
+            document.getElementById('placeholderHasil').classList.add('hidden');
+            document.getElementById('boxHasil').classList.remove('hidden');
+            document.getElementById('boxAksi').classList.remove('hidden');
+
+            // Set Nama
+            document.getElementById('outNama').innerText = nama;
+
+            let rekomendasiMapel = [];
+            let narasiAnalisis = "";
+
+            // Aturan Algoritma Sederhana Rekomendasi Linieritas Mapel Pilihan (Kurikulum Merdeka)
+            if (target === "kedokteran") {
+                rekomendasiMapel = ["Biologi (Utama)", "Kimia (Utama)", "Matematika Tingkat Lanjut", "Bahasa Inggris Tingkat Lanjut"];
+                const rataRataSains = (bioSos + kimEko) / 2;
+                if (rataRataSains >= 80) {
+                    narasiAnalisis = `Pilihan sangat rasional! Nilai sains Anda mendukung syarat SNBP untuk rumpun Kedokteran. Fokus pertahankan nilai Biologi dan Kimia Anda di kelas XI[cite: 5, 6].`;
+                } else {
+                    narasiAnalisis = `Rekomendasi Paket Mapel sudah sesuai dengan aturan SNBP, namun nilai Biologi/Kimia Anda di kelas X masih di bawah 80. Perlu komitmen belajar tinggi (*Growth Mindset*) untuk mendongkrak performa akademik Anda di kelas XI[cite: 5, 6]!`;
+                }
+            } 
+            else if (target === "teknik") {
+                rekomendasiMapel = ["Fisika (Utama)", "Matematika Tingkat Lanjut (Utama)", "Kimia", "Informatika"];
+                if (mtk >= 80 && sainsSosial >= 80) {
+                    narasiAnalisis = `Sangat Cocok! Fondasi nilai Matematika dan Fisika Anda sudah mencukupi prasyarat utama rumpun Teknik & Teknologi Informasi di Perguruan Tinggi Negeri[cite: 5, 6].`;
+                } else {
+                    narasiAnalisis = `Paket mapel Fisika dan Matematika Lanjut wajib diambil. Namun, Anda harus menaikkan fokus belajar karena nilai dasar Matematika/Fisika Anda saat ini memerlukan pendampingan ekstra[cite: 5, 6].`;
+                }
+            } 
+            else if (target === "soshum_ekonomi") {
+                rekomendasiMapel = ["Ekonomi (Utama)", "Matematika Tingkat Lanjut", "Sosiologi", "Bahasa Inggris Tingkat Lanjut"];
+                if (kimEko >= 78) {
+                    narasiAnalisis = `Pilihan kombinasi mapel yang aman dan linier. Pengambilan Matematika Lanjut akan menjadi nilai tambah yang besar bagi portofolio pendaftaran prodi Akuntansi/Manajemen Anda[cite: 5, 6].`;
+                } else {
+                    narasiAnalisis = `Kombinasi mapel sudah ideal untuk rumpun Ekonomi. Disarankan untuk lebih giat memperdalam materi akuntansi dasar/ekonomi di kelas XI guna mengimbangi ketertinggalan nilai[cite: 5, 6].`;
+                }
+            } 
+            else if (target === "soshum_hukum") {
+                rekomendasiMapel = ["Sosiologi (Utama)", "Geografi", "Ekonomi", "Bahasa Inggris Tingkat Lanjut"];
+                if (bioSos >= 80 && sainsSosial >= 80) {
+                    narasiAnalisis = `Sangat Bagus! Kemampuan analisis Anda di bidang sosial (Sosiologi & Geografi) sangat kuat. Rekomendasi mapel pilihan ini memberikan peluang lolos yang besar pada rumpun Ilmu Hukum/Sosial Politik[cite: 5, 6].`;
+                } else {
+                    narasiAnalisis = `Kombinasi mapel ini linier dengan syarat kelulusan Ilmu Hukum PTN. Pastikan Anda membangun kebiasaan membaca intensif untuk meningkatkan nilai di semester depan[cite: 5, 6].`;
+                }
+            }
+
+            // Render Output List Mapel ke Layar
+            const listContainer = document.getElementById('outMapel');
+            listContainer.innerHTML = ""; // Bersihkan list lama
+            rekomendasiMapel.forEach(function(mapel) {
+                let li = document.createElement('li');
+                li.innerText = mapel;
+                listContainer.appendChild(li);
+            });
+
+            // Render Narasi Analisis
+            document.getElementById('outAnalisis').innerText = narasiAnalisis;
+        }
+    </script>
+</body>
+</html>
